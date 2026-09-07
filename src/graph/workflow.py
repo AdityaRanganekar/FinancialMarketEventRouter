@@ -3,6 +3,8 @@ from typing import Literal
 from langgraph.graph import StateGraph, START, END
 from langgraph.prebuilt import ToolNode
 from langchain_openai import ChatOpenAI
+from dotenv import load_dotenv
+import os
 
 from src.entity.state_schema import AgentState
 from src.config.configuration import ConfigurationManager
@@ -11,6 +13,8 @@ from src.agents.core_nodes import AgentNodes
 from src.exception.exception import MarketException
 from src.logging.logger import logging
 
+load_dotenv()
+
 def create_workflow():
     """Initializes and compiles the LangGraph state machine."""
     try:
@@ -18,7 +22,12 @@ def create_workflow():
         config_manager = ConfigurationManager()
         llm_config = config_manager.get_llm_config()
 
+        gemini_api_key = os.getenv("GEMINI_API_KEY")
+        if not gemini_api_key:
+            raise ValueError("GEMINI_API_KEY is not set in the environment or .env file.")
+        
         llm = ChatOpenAI(
+            api_key=gemini_api_key,
             base_url=llm_config.base_url,
             model=llm_config.model_name,
             temperature=llm_config.temperature,
