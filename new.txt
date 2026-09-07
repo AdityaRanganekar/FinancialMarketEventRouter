@@ -1,0 +1,21 @@
+FinancialMarketEventRouter/
+├── .env
+├── .gitignore
+├── app.py
+├── requirements.txt
+├── notebooks/
+│   └── 01_agent_prototyping.ipynb
+└── src/
+    ├── __init__.py
+    ├── entity/
+    │   ├── __init__.py
+    │   └── state.py
+    ├── tools/
+    │   ├── __init__.py
+    │   └── search.py
+    ├── agents/
+    │   ├── __init__.py
+    │   └── nodes.py
+    └── graph/
+        ├── __init__.py
+        └── workflow.py

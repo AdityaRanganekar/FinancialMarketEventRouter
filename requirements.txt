@@ -1,0 +1,10 @@
+langgraph
+langchain-openai
+yfinance
+pydantic
+fastapi
+uvicorn
+python-dotenv
+pyyaml
+jupyter
+ipykernel
